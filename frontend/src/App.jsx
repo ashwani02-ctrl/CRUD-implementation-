@@ -30,16 +30,17 @@ export default function Form() {
     setRole("");
   }
 
-  useEffect(()=>{
-    const fetchUser = async()=>{
-      const result = await readForm();
-      if(result.success){
-        setUsers(result.data);
-      }
+  const fetchUser = async()=>{
+    const result = await readForm();
+    if(result.success){
+      setUsers(result.data);
     }
+  }
+  useEffect(()=>{
     fetchUser();
-   
+    
   },[])
+  
  
   return (
     <div className="flex min-h-screen items-center justify-center bg-slate-900 p-8">
@@ -126,6 +127,7 @@ export default function Form() {
       {/* right-side placeholder structure */}
       <Rightpanel
       users={users}
+      updateuser={fetchUser}
       />
 
      
